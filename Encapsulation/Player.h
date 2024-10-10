@@ -1,5 +1,6 @@
 #pragma once
 #include "Inventory.h"
+#include "Items.h"
 
 class Player {
 
@@ -28,4 +29,9 @@ class Player {
 
 		void setSpeed(float sp) { speed = sp; }
 		float getSpeed() { return speed; }
+
+
+		Inventory& getInventory() { return inventory; }
+
+
 };

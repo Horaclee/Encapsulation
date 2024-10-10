@@ -5,21 +5,21 @@
 
 class Inventory {
 	public:
-        // Add an item to the inventory
-        void addItem(Items& item) { items_[item.getId()] = item; }
+        void addItem(Items& item);
 
-        // Remove an item from the inventory
-        void removeItem(int id) { items_.erase(id); }
+        void removeItem(const std::string& itemName);
 
-        // Get an item from the inventory
-        Items getItem(int id) { return items_[id]; }
+        Items getItem(int id) { return items[id]; }
 
-        // Print the contents of the inventory
         void printInventory() {
-            for (auto& item : items_) {
-                std::cout << "ID: " << item.second.getId() << ", Name: " << item.second.getName() << std::endl;
+            for (auto& item : items) {
+                std::cout << "Name: " << item.getName() << std::endl;
             }
         }
+
+        void findItemByName(const std::string& name, Items& founditem);
+
 	private:
-		std::map<int, Items> items_;
+		std::vector<Items> items;
+        std::vector<Items> getPredefinedItems();
 };
