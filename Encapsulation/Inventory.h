@@ -5,11 +5,16 @@
 
 class Inventory {
 	public:
-        void addItem(Items& item);
+        Inventory() {
+            std::cout << "Inventory created." << std::endl;
+        }
 
         void removeItem(const std::string& itemName);
 
-        Items getItem(int id) { return items[id]; }
+        void addItemByName(const std::string& itemName);
+
+        const std::vector<Items>& getItems() const { return items; }
+
 
         void printInventory() {
             for (auto& item : items) {
@@ -17,9 +22,10 @@ class Inventory {
             }
         }
 
-        void findItemByName(const std::string& name, Items& founditem);
+        
+
+        std::vector<Items> getPredefinedItems();
 
 	private:
 		std::vector<Items> items;
-        std::vector<Items> getPredefinedItems();
 };

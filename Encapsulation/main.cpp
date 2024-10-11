@@ -1,18 +1,21 @@
 #include "Player.h"
+#include "Enemy.h"
+#include "Entity.h"
 #include "Items.h"
 
 int main() {
 
-	Player player(50.0f, 5.0f, 5.0f, 5.0f, Inventory());
+	Inventory playerinventory;
 
-	Items defaultitem("default", 0.0f, 0.0f, 0.0f, 0.0f);
-
-	player.getInventory().findItemByName("Malignance", defaultitem);
-
-	if (defaultitem.getName() != "default") {
-		std::cout << "item found: " << defaultitem.getName();
-		player.getInventory().addItem(defaultitem);
-	}
+	Player player(50.0f, 5.0f, 5.0f, 5.0f, playerinventory);
+	player.getInventory().addItemByName("Malignance");
 	player.getInventory().printInventory();
+	player.updateStats();
+	
 
+
+	Enemy E(50.0f, 5.0f, 5.0f, 5.0f);
+
+	E.attack(player, E.getAttack());
+	player.attack(E, player.getAttack());
 }
